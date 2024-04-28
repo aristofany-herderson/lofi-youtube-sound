@@ -1,0 +1,23 @@
+.toggle {
+  padding: var(--space-3);
+  border-radius: var(--radii-sm);
+
+  transition: 0.3s background;
+
+  &:hover {
+    background: var(--colors-gray-transparent-100);
+  }
+
+  svg {
+    color: var(--colors-white);
+    transition: 0.3s color;
+  }
+
+  &[data-state="on"] {
+    background: var(--colors-gray-transparent-100);
+
+    svg {
+      color: var(--colors-brown);
+    }
+  }
+}

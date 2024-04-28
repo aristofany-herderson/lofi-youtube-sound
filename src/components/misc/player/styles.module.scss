@@ -1,0 +1,40 @@
+.player {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  aspect-ratio: 16/9;
+}
+
+.maskVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: var(--z-index-up);
+  background: transparent;
+}
+
+.thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: var(--space-5);
+  border-radius: var(--radii-full);
+  background: var(--colors-gray-transparent-100);
+  backdrop-filter: blur(0.6rem);
+
+  svg {
+    color: var(--colors-white);
+    transform: translateX(var(--space-px));
+  }
+}

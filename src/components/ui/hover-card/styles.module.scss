@@ -1,0 +1,26 @@
+.hoverCard {
+  will-change: auto;
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--font-size-xs);
+  border-radius: var(--radii-sm);
+  background: var(--colors-gray-transparent-200);
+  backdrop-filter: blur(0.4rem);
+
+  animation-duration: 0.6s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+
+  &[data-side="top"] {
+    animation-name: slideUp;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

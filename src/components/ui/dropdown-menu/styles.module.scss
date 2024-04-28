@@ -1,0 +1,56 @@
+.content {
+  padding: var(--space-4);
+  background: var(--colors-gray-transparent-100);
+  backdrop-filter: blur(1rem);
+  border-radius: var(--radii-sm);
+  animation-duration: 0.6s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+
+  &[data-state="open"] {
+    animation-name: slideUp;
+  }
+
+  &[data-state="closed"] {
+    animation-name: slideDown;
+  }
+
+  & > div:not(:last-child) {
+    margin-bottom: var(--space-6);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(var(--space-2));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(var(--space-2));
+  }
+}
+
+.label {
+  margin-bottom: var(--space-2);
+  color: var(--colors-white);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-thin);
+
+  display: flex;
+  align-items: center;
+
+  svg {
+    margin-right: var(--space-1);
+  }
+}

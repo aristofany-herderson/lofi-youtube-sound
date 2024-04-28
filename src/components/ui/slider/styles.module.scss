@@ -1,0 +1,30 @@
+.slider {
+  position: relative;
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.track {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  overflow: hidden;
+  border-radius: var(--radii-full);
+  background: var(--colors-brown);
+  cursor: pointer;
+}
+
+.range {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  color: var(--colors-white);
+  background: var(--colors-white);
+  transition: 0.1s;
+}
+
+.thumb {
+  display: none;
+}

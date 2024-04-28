@@ -1,0 +1,33 @@
+{
+  "name": "lofi-youtube-sound",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@radix-ui/react-dialog": "^1.0.5",
+    "@radix-ui/react-dropdown-menu": "^2.0.6",
+    "@radix-ui/react-hover-card": "^1.0.7",
+    "@radix-ui/react-slider": "^1.1.2",
+    "@radix-ui/react-toggle": "^1.0.3",
+    "@uidotdev/usehooks": "^2.4.1",
+    "classnames": "^2.5.1",
+    "next": "14.2.3",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-player": "^2.16.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.3",
+    "sass": "^1.75.0",
+    "typescript": "^5"
+  }
+}
