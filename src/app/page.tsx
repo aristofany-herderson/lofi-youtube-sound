@@ -2,9 +2,11 @@
 import { Menu } from "@/components/layout/menu";
 import { AmbientSounds } from "@/components/misc/ambient-sounds";
 import { Player } from "@/components/misc/player";
+import { GithubIcon } from "@/components/ui/icons/github";
 import { PlayerContextProvider } from "@/contexts/player-context";
 import styles from "@/styles/pages/home.module.scss";
 import { useToggle } from "@uidotdev/usehooks";
+import Link from "next/link";
 import { useEffect } from "react";
 
 export default function Home() {
@@ -25,6 +27,14 @@ export default function Home() {
       </section>
       <Menu />
       <AmbientSounds />
+      <Link
+        className={styles.githubLink}
+        target="_blank"
+        rel="noreferrer noopener"
+        href="https://github.com/aristofany-herderson/lofi-youtube-sound"
+      >
+        <GithubIcon width={20} height={20} />
+      </Link>
     </PlayerContextProvider>
   );
 }

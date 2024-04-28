@@ -18,3 +18,27 @@
   object-fit: cover;
   object-position: center;
 }
+
+.githubLink {
+  position: fixed;
+  inset: auto;
+  width: auto;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  bottom: var(--space-10);
+  right: var(--space-10);
+  padding: var(--space-3);
+  z-index: var(--z-index-overlay);
+  background: var(--colors-gray-trasnparent-100);
+  backdrop-filter: blur(0.6rem);
+  border-radius: var(--radii-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.3s transform;
+
+  &:hover {
+    transform: translateY(calc(-1 * var(--space-1)));
+  }
+}
