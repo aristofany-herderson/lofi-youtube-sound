@@ -11,8 +11,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Lofi Youtube Sound",
-  description: "Listening Lofi",
+  title: "Lofi youtube sound | Listen your lofi",
+  description: "Listening your Lofi",
 };
 
 export default function RootLayout({

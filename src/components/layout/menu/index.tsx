@@ -147,77 +147,79 @@ export const Menu = () => {
             </HoverCardTrigger>
           </DropdownMenuTrigger>
           <HoverCardContent>Adjust volume</HoverCardContent>
+          <DropdownMenuContent side="top" sideOffset={12}>
+            <DropdownMenuGroup>
+              <div className={styles.volumeController}>
+                <VideoIcon width={18} height={18} />
+                <Slider
+                  value={[videoVolume]}
+                  onValueChange={(value) => setVideoVolumeState(value[0])}
+                  className={styles.slider}
+                  max={1}
+                  min={0}
+                  step={0.01}
+                />
+                <input
+                  type="number"
+                  min={0}
+                  max={100}
+                  value={Math.round(videoVolume * 100)}
+                  onChange={(e) => {
+                    const currentValue = Number(e.target.value);
+                    if (
+                      !isNaN(currentValue) &&
+                      currentValue >= 0 &&
+                      currentValue <= 100
+                    ) {
+                      setVideoVolumeState(currentValue / 100);
+                    }
+                  }}
+                />
+              </div>
+            </DropdownMenuGroup>
+            <DropdownMenuGroup>
+              <div className={styles.volumeController}>
+                <NatureIcon width={18} height={18} />
+                <Slider
+                  value={[ambientAudiosVolume]}
+                  onValueChange={(value) =>
+                    setAmbientAudiosVolumeState(value[0])
+                  }
+                  className={styles.slider}
+                  max={1}
+                  min={0}
+                  step={0.01}
+                />
+                <input
+                  type="number"
+                  min={0}
+                  max={100}
+                  value={Math.round(ambientAudiosVolume * 100)}
+                  onChange={(e) => {
+                    const currentValue = Number(e.target.value);
+                    if (
+                      !isNaN(currentValue) &&
+                      currentValue >= 0 &&
+                      currentValue <= 100
+                    ) {
+                      setAmbientAudiosVolumeState(currentValue / 100);
+                    }
+                  }}
+                />
+              </div>
+            </DropdownMenuGroup>
+          </DropdownMenuContent>
         </HoverCard>
-        <DropdownMenuContent side="top" sideOffset={12}>
-          <DropdownMenuGroup>
-            <div className={styles.volumeController}>
-              <VideoIcon width={18} height={18} />
-              <Slider
-                value={[videoVolume]}
-                onValueChange={(value) => setVideoVolumeState(value[0])}
-                className={styles.slider}
-                max={1}
-                min={0}
-                step={0.01}
-              />
-              <input
-                type="number"
-                min={0}
-                max={100}
-                value={Math.round(videoVolume * 100)}
-                onChange={(e) => {
-                  const currentValue = Number(e.target.value);
-                  if (
-                    !isNaN(currentValue) &&
-                    currentValue >= 0 &&
-                    currentValue <= 100
-                  ) {
-                    setVideoVolumeState(currentValue / 100);
-                  }
-                }}
-              />
-            </div>
-          </DropdownMenuGroup>
-          <DropdownMenuGroup>
-            <div className={styles.volumeController}>
-              <NatureIcon width={18} height={18} />
-              <Slider
-                value={[ambientAudiosVolume]}
-                onValueChange={(value) => setAmbientAudiosVolumeState(value[0])}
-                className={styles.slider}
-                max={1}
-                min={0}
-                step={0.01}
-              />
-              <input
-                type="number"
-                min={0}
-                max={100}
-                value={Math.round(ambientAudiosVolume * 100)}
-                onChange={(e) => {
-                  const currentValue = Number(e.target.value);
-                  if (
-                    !isNaN(currentValue) &&
-                    currentValue >= 0 &&
-                    currentValue <= 100
-                  ) {
-                    setAmbientAudiosVolumeState(currentValue / 100);
-                  }
-                }}
-              />
-            </div>
-          </DropdownMenuGroup>
-        </DropdownMenuContent>
       </DropdownMenu>
       <DropdownMenu>
         <HoverCard openDelay={500} closeDelay={100}>
-          <DropdownMenuTrigger asChild>
-            <HoverCardTrigger asChild>
+          <HoverCardTrigger>
+            <DropdownMenuTrigger asChild>
               <button className={styles.button}>
                 <TuneIcon width={16} height={16} />
               </button>
-            </HoverCardTrigger>
-          </DropdownMenuTrigger>
+            </DropdownMenuTrigger>
+          </HoverCardTrigger>
           <HoverCardContent>Sound effects</HoverCardContent>
         </HoverCard>
         <DropdownMenuContent side="top" sideOffset={12}>

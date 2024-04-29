@@ -22,14 +22,14 @@
 .githubLink {
   position: fixed;
   inset: auto;
-  width: auto;
+  width: var(--space-10);
   height: auto;
   aspect-ratio: 1 / 1;
-  bottom: var(--space-10);
+  bottom: calc(var(--space-12));
+
   right: var(--space-10);
-  padding: var(--space-3);
   z-index: var(--z-index-overlay);
-  background: var(--colors-gray-trasnparent-100);
+  background: var(--colors-gray-transparent-200);
   backdrop-filter: blur(0.6rem);
   border-radius: var(--radii-full);
   display: flex;

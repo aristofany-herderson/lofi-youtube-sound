@@ -31,7 +31,7 @@ export function PlayerContextProvider({
   const [isPlayingVideo, setIsPlayingVideo] = useState<boolean>(false);
   const [videoUrl, setVideoUrl] = useLocalStorage(
     "videoUrl",
-    "https://www.youtube.com/watch?v=ir96UnkKIgA"
+    "https://www.youtube.com/watch?v=8ZeC-8klo_o"
   );
   const [videoVolume, setVideoVolume] = useLocalStorage("videoVolume", 0.9);
   const [ambientAudiosVolume, setAmbientAudiosVolume] = useLocalStorage(

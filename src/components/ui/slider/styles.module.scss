@@ -11,7 +11,7 @@
   height: 4px;
   overflow: hidden;
   border-radius: var(--radii-full);
-  background: var(--colors-brown);
+  background: var(--colors-gray-200);
   cursor: pointer;
 }
 
@@ -22,7 +22,7 @@
   height: 100%;
   color: var(--colors-white);
   background: var(--colors-white);
-  transition: 0.1s;
+  transition: 0.1s left, 0.1s right;
 }
 
 .thumb {

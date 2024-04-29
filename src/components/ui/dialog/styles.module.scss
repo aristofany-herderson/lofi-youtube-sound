@@ -4,7 +4,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: var(--colors-gray-transparent-300);
+  background: var(--colors-gray-transparent-200);
   z-index: var(--z-index-modal);
 }
 
@@ -21,7 +21,7 @@
   outline: none;
   z-index: var(--z-index-modal);
 
-  background: var(--colors-brown);
+  background: var(--colors-gray-300);
   backdrop-filter: blur(0.8rem);
   border-radius: var(--radii-md);
   overflow: auto;
