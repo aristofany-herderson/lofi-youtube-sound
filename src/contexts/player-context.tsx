@@ -31,7 +31,7 @@ export function PlayerContextProvider({
   const [isPlayingVideo, setIsPlayingVideo] = useState<boolean>(false);
   const [videoUrl, setVideoUrl] = useLocalStorage(
     "videoUrl",
-    "https://www.youtube.com/watch?v=8ZeC-8klo_o"
+    "https://www.youtube.com/watch?v=c3suauAz0zQ?autoplay=1&color=white,rel=0&controls=0&disablekb=1&fs=0&loop=1&modestbranding=1&showinfo=0&playsinline=0"
   );
   const [videoVolume, setVideoVolume] = useLocalStorage("videoVolume", 0.9);
   const [ambientAudiosVolume, setAmbientAudiosVolume] = useLocalStorage(
@@ -65,6 +65,7 @@ export function PlayerContextProvider({
 
   const handleToggleAmbientAudioPlayingState = (index: number) => {
     updateAmbientAudiosList(index, {
+      title: ambientAudiosList[index].title,
       audio: ambientAudiosList[index].audio,
       icon: ambientAudiosList[index].icon,
       playing: !ambientAudiosList[index].playing,

@@ -31,7 +31,7 @@ import { VolumeIcon } from "@/components/ui/icons/volume";
 import { Slider } from "@/components/ui/slider";
 import { Toggle } from "@/components/ui/toggle";
 import { usePlayer } from "@/contexts/player-context";
-import { useToggle } from "@uidotdev/usehooks";
+import { useFullscreen } from "@/hooks/use-fullscreen";
 import { useState } from "react";
 import styles from "./styles.module.scss";
 
@@ -50,26 +50,21 @@ export const Menu = () => {
     stopVideoAndAmbientAudios,
   } = usePlayer();
   const [inputUrlValue, setInputUrlValue] = useState("");
-  const [isInFullScreen, setIsInFullScreen] = useToggle(false);
-
-  const handleToggleFullScreen = () => {
-    const window = document.documentElement;
-
-    if (isInFullScreen) {
-      document.exitFullscreen();
-      setIsInFullScreen(false);
-      return;
-    }
-
-    window.requestFullscreen();
-    setIsInFullScreen(true);
-  };
+  const { isFullscreen, toggleFullscreen } = useFullscreen();
 
   const handleSubmitUrl = () => {
-    const verification =
-      inputUrlValue.trim() != "" && inputUrlValue.includes("?v=");
+    const regExp =
+      /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    const match = inputUrlValue.match(regExp);
+    const verifyMatch = match && match[2].length == 11;
+    const videoId = verifyMatch && match[2];
 
-    verification && setVideoUrlState(inputUrlValue);
+    setInputUrlValue("");
+
+    videoId &&
+      setVideoUrlState(
+        `https://www.youtube.com/watch?v=${videoId}?autoplay=1&color=white,rel=0&controls=0&disablekb=1&fs=0&loop=1&modestbranding=1&showinfo=0&playsinline=0`
+      );
   };
   return (
     <nav className={styles.menu}>
@@ -135,18 +130,17 @@ export const Menu = () => {
             <StopIcon width={13} height={13} />
           </button>
         </HoverCardTrigger>
-        <HoverCardContent>Stop sound</HoverCardContent>
+        <HoverCardContent>Stop all sounds</HoverCardContent>
       </HoverCard>
       <DropdownMenu>
         <HoverCard openDelay={500} closeDelay={100}>
-          <DropdownMenuTrigger asChild>
-            <HoverCardTrigger asChild>
+          <HoverCardTrigger>
+            <DropdownMenuTrigger asChild>
               <button className={styles.button}>
                 <VolumeIcon width={16} height={16} />
               </button>
-            </HoverCardTrigger>
-          </DropdownMenuTrigger>
-          <HoverCardContent>Adjust volume</HoverCardContent>
+            </DropdownMenuTrigger>
+          </HoverCardTrigger>
           <DropdownMenuContent side="top" sideOffset={12}>
             <DropdownMenuGroup>
               <div className={styles.volumeController}>
@@ -209,6 +203,7 @@ export const Menu = () => {
               </div>
             </DropdownMenuGroup>
           </DropdownMenuContent>
+          <HoverCardContent>Adjust volume</HoverCardContent>
         </HoverCard>
       </DropdownMenu>
       <DropdownMenu>
@@ -220,32 +215,36 @@ export const Menu = () => {
               </button>
             </DropdownMenuTrigger>
           </HoverCardTrigger>
-          <HoverCardContent>Sound effects</HoverCardContent>
+          <DropdownMenuContent side="top" sideOffset={12}>
+            <DropdownMenuGroup>
+              <div className={styles.ambientSounds}>
+                {ambientAudiosList.map((audio, index) => {
+                  return (
+                    <HoverCard openDelay={1000} closeDelay={100} key={index}>
+                      <HoverCardTrigger>
+                        <Toggle
+                          pressed={audio.playing}
+                          onPressedChange={() =>
+                            handleToggleAmbientAudioPlayingState(index)
+                          }
+                        >
+                          {audio.icon}
+                        </Toggle>
+                      </HoverCardTrigger>
+                      <HoverCardContent>{audio.title} sound</HoverCardContent>
+                    </HoverCard>
+                  );
+                })}
+              </div>
+            </DropdownMenuGroup>
+          </DropdownMenuContent>
+          <HoverCardContent>Ambient sounds</HoverCardContent>
         </HoverCard>
-        <DropdownMenuContent side="top" sideOffset={12}>
-          <DropdownMenuGroup>
-            <div className={styles.ambientSounds}>
-              {ambientAudiosList.map((audio, index) => {
-                return (
-                  <Toggle
-                    pressed={audio.playing}
-                    onPressedChange={() =>
-                      handleToggleAmbientAudioPlayingState(index)
-                    }
-                    key={index}
-                  >
-                    {audio.icon}
-                  </Toggle>
-                );
-              })}
-            </div>
-          </DropdownMenuGroup>
-        </DropdownMenuContent>
       </DropdownMenu>
       <HoverCard openDelay={500} closeDelay={100}>
         <HoverCardTrigger asChild>
-          <button onClick={handleToggleFullScreen} className={styles.button}>
-            {isInFullScreen ? (
+          <button onClick={toggleFullscreen} className={styles.button}>
+            {isFullscreen ? (
               <FullScreenExitIcon
                 className={styles.animatedIcon}
                 width={16}
@@ -261,7 +260,7 @@ export const Menu = () => {
           </button>
         </HoverCardTrigger>
         <HoverCardContent>
-          {isInFullScreen ? <p>Exit fullscreen</p> : <p>Fullscreen</p>}
+          {isFullscreen ? <p>Exit full screen</p> : <p>Full screen</p>}
         </HoverCardContent>
       </HoverCard>
     </nav>

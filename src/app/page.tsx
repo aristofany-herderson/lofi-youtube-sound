@@ -8,6 +8,7 @@ import styles from "@/styles/pages/home.module.scss";
 import { useToggle } from "@uidotdev/usehooks";
 import Link from "next/link";
 import { useEffect } from "react";
+import Loading from "./loading";
 
 export default function Home() {
   const [mounted, setMounted] = useToggle(false);
@@ -17,7 +18,7 @@ export default function Home() {
   }, [setMounted]);
 
   if (!mounted) {
-    return <></>;
+    return <Loading />;
   }
 
   return (

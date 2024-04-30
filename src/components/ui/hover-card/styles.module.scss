@@ -1,13 +1,18 @@
 .hoverCard {
-  will-change: auto;
   padding: var(--space-1) var(--space-2);
   font-size: var(--font-size-xs);
   border-radius: var(--radii-sm);
-  background: var(--colors-gray-transparent-200);
+  background: var(--colors-gray-300);
   backdrop-filter: blur(0.4rem);
+  z-index: var(--z-index-overlay);
 
   animation-duration: 0.6s;
   animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  
+  &,
+  * {
+    pointer-events: none;
+  }
 
   &[data-state="open"] {
     animation: fadeIn 0.15s ease-out;

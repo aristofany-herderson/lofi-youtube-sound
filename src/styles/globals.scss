@@ -6,14 +6,14 @@
 
 :root {
   --colors-gray-transparent-100: rgba(204, 204, 204, 0.2);
-  --colors-gray-transparent-200: rgba(46, 50, 48, 0.64);
+  --colors-gray-transparent-200: rgba(46, 50, 48, 0.46);
 
-  --colors-brown: #805231;
   --colors-red: #f96e67;
 
   --colors-gray-100: rgb(202, 202, 202);
   --colors-gray-200: rgb(129, 129, 129);
-  --colors-gray-300: rgb(35, 37, 36);
+  --colors-gray-300: rgb(53, 51, 56);
+  --colors-gray-400: rgb(36, 35, 37);
 
   --colors-black: #000000;
   --colors-white: #ffffff;
@@ -150,7 +150,7 @@ ul {
 }
 
 ::selection {
-  background: var(--colors-brown);
+  background: var(--colors-gray-400);
 }
 
 ::-webkit-scrollbar {

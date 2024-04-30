@@ -1,0 +1,40 @@
+.wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--colors-gray-400);
+  flex-direction: column;
+  z-index: var(--z-index-modal);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  p {
+    margin-top: var(--space-1);
+    font-size: var(--font-size-xs);
+  }
+
+  svg path {
+    fill-opacity: 0;
+
+    stroke: white;
+    stroke-width: 0.8px;
+    stroke-dasharray: 60;
+    animation: draw 8s ease infinite;
+  }
+}
+
+@keyframes draw {
+  0%,
+  2%,
+  98%,
+  100% {
+    stroke-dashoffset: 60;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+}
